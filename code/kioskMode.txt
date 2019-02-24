@@ -1,0 +1,9 @@
+// Status bar
+
+// Overriding back button
+@Override
+protected void onBackPressed() { }
+
+// Overriding multitasking button click
+
+

@@ -1,0 +1,35 @@
+public void DisableStatusBar() {
+    try {
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        layoutParams.gravity = Gravity.TOP;
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = (int) (50 * Resources.getSystem().getDisplayMetrics().scaledDensity);
+        layoutParams.format = PixelFormat.TRANSPARENT;
+
+
+        WindowManager manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        CustomViewGroup view = new CustomViewGroup(this);
+        manager.addView(view, layoutParams);
+    } catch (Exception e) {
+        if ( !Settings.canDrawOverlays(this))
+            showAlert( new AlertDetails( "Permission Error", "Enable draw over apps in settings.", null ) );
+    }
+}
+
+class CustomViewGroup extends ViewGroup {
+    public CustomViewGroup(Context context) {
+        super(context);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        return true;
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        // throw new NotImplementedException();
+    }
+}

@@ -1,0 +1,6 @@
+@Override
+protected void onPause() {
+    super.onPause();
+    ActivityManager am = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+    am.moveTaskToFront(getTaskId(), 0);
+}

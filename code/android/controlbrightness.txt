@@ -1,0 +1,17 @@
+fun controlBrightness(dim: Boolean) {
+    activity.runOnUiThread {
+        val windows = WindowManager.LayoutParams()
+        windows.copyFrom(activity.window.attributes)
+
+        if (dim) {
+            windows.screenBrightness = 0.0f
+            this.callback!!.screenDimmed()
+        } else {
+            windows.screenBrightness = 0.9f
+            this.callback!!.screenIlluminated()
+        }
+
+        activity.window.attributes = windows
+    }
+}
+

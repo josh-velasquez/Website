@@ -33,7 +33,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="../index.html">Joshua Velasquez</a>
+            <a class="navbar-brand js-scroll-trigger" href="../index.html"> z</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -80,14 +80,12 @@
                 <div>
                     <h5 class="mb-3">Android: Kiosk Mode (Without Root)</h5>
                     <p class="text-muted mb-0">Since Android doesn't let you have full control over the whole operating
-                        system,
-                        you are quite
-                        limited as to what you can do to fully "lock-down" your device with your application (i.e. Kiosk
-                        mode).
-                        However, there are some workarounds to this if you spend enough time to tinker around.
-                        To simulate kiosk mode on Android for a full lockdown on an Android application, there are a few
-                        things
-                        you need to control.
+                        system, you are quite limited as to what you can do to fully "lock-down" your device with your
+                        application (i.e. Kiosk
+                        mode). However, there are some workarounds to this if you spend enough time to tinker around. To
+                        simulate kiosk mode on Android for a full lockdown on an Android application, there are a few
+                        things you need to control. NOTE: THIS REQUIRES FULL ACCESS TO THE DEVICE YOU ARE APPLYING THE
+                        KIOSK MODE ON
                     </p>
                     <ol class="text-muted mb-0">
                         <li>
@@ -110,111 +108,225 @@
                     <div class="text-muted mb-0" id="kioskMode" style="display: none">
                         <br />
                         <div>
+                            <h5>1. Status Bar</h5>
                             <p style="font-size:85%">The easiest way to hide the status bar dropdown is to either hide
-                                it completely by setting the
-                                application to full screen</p>
-                            <iframe src="../code/kioskMode.txt" frameborder="0" height="100" width="600"></iframe>
+                                it completely by setting the application to full screen</p>
+                            <iframe src="../code/android/kioskmode/fullscreen.txt" frameborder="0" height="100"
+                                width="600"></iframe>
                             <p>However, if you do not want the user to fully deny users access to the status bar (to
-                                navigate out of
-                                the application) there is a simply hacky way of achieving this by creating an overlay
-                                that would
-                                rest on top of your application that will consume all touch inputs from the user (i.e.
-                                swiping down the
-                                status bar).</p>
-                            <iframe src="../code/kioskMode.txt" frameborder="0" height="100" width="600"></iframe>
+                                navigate out of the application) there is a simply hacky way of achieving this by
+                                creating an overlay
+                                that would rest on top of your application that will consume all touch inputs from the
+                                user (i.e.
+                                swiping down the status bar).</p>
+                            <iframe src="../code/android/kioskmode/statusbar.txt" frameborder="0" height="300"
+                                width="600"></iframe>
+                            <p style="font-size:85%">This code essentially draws a transparent bar on top of the status
+                                bar which consumes all touch events.</p>
                         </div>
-                    </div>
-                </div>
-                <br />
-                <hr />
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: WiFi Connection</h5>
-                        <p class="text-muted mb-0">Android allows you to connect to various scanned WiFi connections
-                            available in
-                            your area through settings. However, if you
-                            need WiFi scanning and connection integrated within your app, an easy way to do it is to use
-                            Android's
-                            built in WifiManager in API's higher than 28 or Android Pie.
-                            Don't forget to add permissions! <a onclick="controlVisibility('wifiConnection');">Learn
-                                more...</a>
-                        </p>
-                        <div class="text-muted mb-0" id="wifiConnection" style="display: none">
-                            <br />
-                            <div>
-                                <p>The easiest way to hide the status bar dropdown is to either hide it completely by
-                                    setting the
-                                    application to full screen</p>
-                                <iframe src="code\WifiManager.txt" frameborder="0" height="500" width="650"></iframe>
-                            </div>
+                        <div>
+                            <h5>2. Back Button</h5>
+                            <iframe src="../code/android/kioskmode/backpressed.txt" frameborder="0" height="50"
+                                width="600"></iframe>
+                            <p style="font-size:85%">It's as simple as manually overriding the back button (Note: This
+                                disables back button navigation within your app. If you
+                                do not want to do this, simply override this in your activity and you'll be able to
+                                navigate back again)</p>
                         </div>
-                    </div>
-                </div>
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: Bluetooth Connection</h5>
-                        <p class="text-muted mb-0">Android allows you total control over available bluetooth connections
-                            in
-                            settings, but you can also create your own in app bluetooth connection
-                            manager where you can scan for all bluetooth device (or a specific bluetooth device), choose
-                            a device to
-                            pair to, and remove bonded device(s).
-                        </p>
-                    </div>
-                </div>
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: Language</h5>
-                        <p class="text-muted mb-0">Supporting different languages for your app is not a must these days
-                            but it would
-                            definitely help to have support for
-                            different languages for better user experience. Though the accuracies of your translations
-                            might be a bit
-                            questionable (if not done by a professional
-                            translator), having the option to switch between languages is always nice feature to have in
-                            applications.
-                            LINK TO THE XML translator
-                        </p>
-                    </div>
-                </div>
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: Graph Animations</h5>
-                        <p class="text-muted mb-0">If you need graphing integration or animations that relies heavily on
-                            per frame
-                            basis, GraphView is a dependency must have for your application.
-                            It has a simple integration in your app that can transform an app to a modernized one. LINK
-                            TO GRAPHVIEW
-                        </p>
-                    </div>
-                </div>
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: Playing Sounds</h5>
-                        <p class="text-muted mb-0">Sound effects can add creativeness in your creation when used wisely.
-                            Having more
-                            than one sound effects can definitely be hard to maintain if they're
-                            used in more than one activity.
-                        </p>
-                    </div>
-                </div>
-                <br />
-                <div class="container" style="text-indent:50px">
-                    <div>
-                        <h5 class="mb-3">Android: Playing Videos</h5>
-                        <p class="text-muted mb-0">Video's are often useful for developers to either advertise or to
-                            show
-                            instructions within their app. Creating a custom video
-                            loader is a must whenever you have more than one video to show your users.
-                        </p>
+                        <div>
+                            <h5>3. Home Button</h5>
+                            <p style="font-size: 85%">This is a bit tricky to completely override. For this to actually
+                                be overriden, you need to set your application
+                                as the main launcher of the device itself. This can be easily done in the settings of
+                                the device and choosing your
+                                application as the default launcher for the device.</p>
+                        </div>
+                        <div>
+                            <h5>4. Multitask Button</h5>
+                            <p style="font-size:85%">The multitasking button allows you to switch between running apps
+                                and close them. This is not desireable! To have this button
+                                on lockdown, we need to override the method that is called whenever your app is toggled
+                                out. The onPause method is responsible
+                                for this. Basically, whenever you toggle out of your app, the onPause method is called.
+                            </p>
+                            <iframe src="../code/android/kioskmode/multitaskbutton.txt" height="150"
+                                width="600"></iframe>
+                            <p style="font-size:85%">This code basically forces your application to be at the front of
+                                all the applications open all the time which
+                                renders the multitasking button useless.</p>
+                        </div>
+                        <div>
+                            <h5>5. Power and Volume Buttons</h5>
+
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: WiFi Connection</h5>
+                <p class="text-muted mb-0">Android allows you to connect to various scanned WiFi connections
+                    available in your area through settings. However, if you need WiFi scanning and connection
+                    integrated within your app, an easy way to do it is to use Android's built in WifiManager in API's
+                    higher than 28 or Android Pie.
+                    Don't forget to add permissions!
+                </p>
+                <a onclick="controlVisibility('wifiConnection');">Learn
+                    more...</a>
+                <div class="text-muted mb-0" id="wifiConnection" style="display: none">
+                    <br />
+                    <iframe src="../code/android/wifiManager.txt" height="500" width="650"></iframe>
+                    <p style="font-size:85%">This code highlights some of network capabilities you can add in your
+                        application. Once you call startScan(), it will retrieve all the available WiFi connections your
+                        device can find. You can also filter these results once you obtain them in your activity or
+                        viewmodel class. Currently, this code only supports for WPA, WPA2, and WEP connections. Feel
+                        free to add more connections!</p>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Bluetooth Connection</h5>
+                <p class="text-muted mb-0">Android allows you total control over available bluetooth connections
+                    in settings, but you can also create your own in app bluetooth connection
+                    manager where you can scan for all bluetooth device (or a specific bluetooth device), choose
+                    a device to pair to, and remove bonded device(s).
+                </p>
+                <a onclick="controlVisibility('bluetoothConnection');">Learn more ...</a>
+                <div class="text-muted mb-0" id="bluetoothConnection" style="display: none">
+                    <br />
+                    <iframe src="../code/android/bluetoothconnection.txt" height="500" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Language</h5>
+                <p class="text-muted mb-0">Supporting different languages for your app is not a must these days
+                    but it would definitely help to have support for different languages for better user experience.
+                    Though the accuracies of your translations might be a bit questionable (if not done by a
+                    professional translator), having the option to switch between languages is always nice feature to
+                    have in applications. LINK TO THE XML translator
+                </p>
+                <a onclick="controlVisibility('language');">Learn more ...</a>
+                <div class="text-muted mb-0" id="language" style="display: none">
+                    <br />
+                    <iframe src="../code/android/language.txt" height="500" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Graph Animations</h5>
+                <p class="text-muted mb-0">If you need graphing integration or animations that relies heavily on
+                    per frame
+                    basis, GraphView is a dependency must have for your application.
+                    It has a simple integration in your app that can transform an app to a modernized one. LINK
+                    TO GRAPHVIEW
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Playing Sounds</h5>
+                <p class="text-muted mb-0">Sound effects can add creativeness in your creation when used wisely.
+                    Having more than one sound effects can definitely be hard to maintain if they're
+                    used in more than one activity.
+                </p>
+                <a onclick="controlVisibility('sound');">Learn more ...</a>
+                <div class="text-muted mb-0" id="sound" style="display: none">
+                    <br />
+                    <iframe src="../code/android/sound.txt" height="500" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Playing Videos</h5>
+                <p class="text-muted mb-0">Video's are often useful for developers to either advertise or to
+                    show instructions within their app. Creating a custom video loader is a must whenever you have more
+                    than one video to show your users.
+                </p>
+                <a onclick="controlVisibility('videos');">Learn more ...</a>
+                <div class="text-muted mb-0" id="videos" style="display: none">
+                    <br />
+                    <iframe src="../code/android/videos.txt" height="500" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Controlling Brightness</h5>
+                <p class="text-muted mb-0">The brightness of your device can sometimes affect the overall funcitonality
+                    of your app. Due to this, developers often manually control the brightness of their application to
+                    better suit their needs. This code allows you to control the brightness of your application.
+                </p>
+                <a onclick="controlVisibility('brightness');">Learn more ...</a>
+                <div class="text-muted mb-0" id="brightness" style="display: none">
+                    <br />
+                    <iframe src="../code/android/controlbrightness.txt" height="500" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Showing and Hiding Keyboard</h5>
+                <p class="text-muted mb-0">Keyboards are useful for user input. However, if you've been developing on
+                    Android for sometime, you'll notice that sometimes the keyboard won't toggle on or toggle off when
+                    you want to.
+                </p>
+                <a onclick="controlVisibility('keyboard');">Learn more ...</a>
+                <div class="text-muted mb-0" id="keyboard" style="display: none">
+                    <br />
+                    <iframe src="../code/android/keyboardtoggle.txt" height="300" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Screen Sleep</h5>
+                <p class="text-muted mb-0">If you want to run your app for a long period, sometimes its handy to turn
+                    the screen off so that you save battery power. This code forces your device to sleep so that you
+                    don't drain as much energy to power on the screen of your device. NOTE: IF YOU WANT YOUR APPLICATION
+                    TO RUN WHILE YOUR TABLET IS ASLEEP, MAKE SURE YOU TURN THE CPU ON SO THAT THE OS DOES NOT KILL YOUR
+                    APPLICATION IN THE BACKGROUND.
+                </p>
+                <a onclick="controlVisibility('sleep');">Learn more ...</a>
+                <div class="text-muted mb-0" id="sleep" style="display: none">
+                    <br />
+                    <iframe src="../code/android/screensleep.txt" height="200" width="650"></iframe>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container" style="text-indent:50px">
+            <div>
+                <h5 class="mb-3">Android: Saving to Shared Preferences</h5>
+                <p class="text-muted mb-0">When you need to save something temporarily (i.e. tokens, passwords,
+                    settings, etc...) Android allows you to save them to shared preferences. Shared preferences is a
+                    file specific to your application to which only your application can access. With this, you can read
+                    and write to this whatever you want. This is very useful when you want to save a setting for example
+                    that you want to be unique for every device (Ex. language).
+                </p>
+                <a onclick="controlVisibility('sharedpreferences');">Learn more ...</a>
+                <div class="text-muted mb-0" id="sharedpreferences" style="display: none">
+                    <br />
+                    <iframe src="../code/android/sharedpreferences.txt" height="200" width="650"></iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
 

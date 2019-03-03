@@ -1,0 +1,12 @@
+private fun savePreference(id: String): String {
+    val preference = context.getSharedPreferences("[DIRECTORY_OF_YOUR_APP_SHARED_PREF]",Activity.MODE_PRIVATE)
+    val storedValue = preference.getString(id,"")
+    return storedValue
+}
+
+private fun loadPreference(id: String, value: String) {
+    val preference = context.getSharedPreferences("[DIRECTORY_OF_YOUR_APP_SHARED_PREF]",Activity.MODE_PRIVATE)
+    val editor = preference.edit()
+    editor.putString(id,value)
+    editor.apply()
+}

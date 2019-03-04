@@ -70,7 +70,7 @@ constructor(rivate val context: Context) {
     ) {
         val langPref = "Language"
         val prefs = context.getSharedPreferences(
-            "com.zephyrsleep.tablet.PREFERENCES",
+            "[YOUR_APP_DIR].PREFERENCES",
             Activity.MODE_PRIVATE
         )
         val editor = prefs.edit()

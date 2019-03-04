@@ -197,7 +197,13 @@
                     </div>
                     <div>
                         <h9>5. Power and Volume Buttons</h9>
-
+                        <p style="font-size:85%">Disabling the power and volume buttons are also quite tricky since they
+                            are received from the OS side. However, you can intercept these button presses and execute
+                            your own code by creating a receiver that will listen for the button presses.
+                        </p>
+                        <iframe src="../code/android/kioskmode/powervolume.txt" height="150" width="600"></iframe>
+                        <p style="font-size:85%">Don't forget to register this receiver in the start of your main
+                            activity so that it continuously listens in the background for these button presses.</p>
                     </div>
                 </div>
             </div>
@@ -208,8 +214,8 @@
             <div id="wifiConnectionNav">
                 <h5 class="mb-3">WiFi Connection</h5>
                 <p class="text-muted mb-0" style="font-size:85%">Android allows you to connect to various scanned WiFi
-                    connections
-                    available in your area through settings. However, if you need WiFi scanning and connection
+                    connections available in your area through settings. However, if you need WiFi scanning and
+                    connection
                     integrated within your app, an easy way to do it is to use Android's built in WifiManager in API's
                     higher than 28 or Android Pie.
                     Don't forget to add permissions!

@@ -1,0 +1,87 @@
+InnerReceiver ir = new InnerReceiver(GetType());
+IntentFilter ifilter = new IntentFilter(Intent.ActionCloseSystemDialogs);
+ifilter.AddAction(Intent.ActionScreenOff);
+RegisterReceiver(ir, ifilter);
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+
+namespace Notus8Android
+{
+    /// <summary>
+    /// This class handles and intercepts the home and power button press
+    /// </summary>
+    class InnerReceiver : BroadcastReceiver
+    {
+        private string SYSTEM_DIALOG_REASON_KEY = "reason";
+        private string SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
+        private Type currentView;
+        private static bool exitKioskMode;
+
+        /// <summary>
+        /// Constructor to set the current view
+        /// </summary>
+        /// <param name="view">Current view</param>
+        public InnerReceiver(Type view)
+        {
+            currentView = view;
+            exitKioskMode = false;
+        }
+        /// <summary>
+        /// Exits the kiosk mode of the app
+        /// </summary>
+        /// <param name="exit"></param>
+        public static void ExitKioskMode()
+        {
+            exitKioskMode = true;
+        }
+
+        /// <summary>
+        /// Intercepts the home and power key press
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="intent"></param>
+        public override void OnReceive(Context context, Intent intent)
+        {
+            string action = intent.Action;
+            if (!exitKioskMode)
+            {
+                // Home button press
+                if (Intent.ActionCloseSystemDialogs == action)
+                {
+                    string reason = intent.GetStringExtra(SYSTEM_DIALOG_REASON_KEY);
+                    if (reason != null)
+                    {
+                        if (reason == SYSTEM_DIALOG_REASON_HOME_KEY)
+                        {
+                            var new_intent = new Intent(context, currentView);
+                            new_intent.AddFlags(ActivityFlags.NewTask);
+                            context.StartActivity(new_intent);
+                        }
+                    }
+                }
+                // Power button press
+                else if (Intent.ActionScreenOff == action)
+                {
+                    PowerManager powerManager = (PowerManager)context.GetSystemService(Context.PowerService);
+                    var wakeLock = powerManager.NewWakeLock(WakeLockFlags.ScreenDim | WakeLockFlags.AcquireCausesWakeup | WakeLockFlags.OnAfterRelease, "relaunch");
+                    wakeLock.Acquire();
+                    AlarmManager alarmManager = (AlarmManager)context.GetSystemService(Context.AlarmService);
+                    Intent copyIntent = intent;
+                    PendingIntent pendingIntent = PendingIntent.GetActivity(context, 0, intent, 0);
+                    alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, 10, pendingIntent);
+                }
+            }
+        }
+    }
+}

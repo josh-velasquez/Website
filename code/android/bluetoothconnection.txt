@@ -62,7 +62,7 @@ public class BluetoothBond {
     private boolean checkPairedDevices() {
         if (bluetoothAdapter == null) return false;
         for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
-            if (--your device name or device category etc...---) {
+            if ([your device name or device category etc]) {
                 return true;
             }
         }
@@ -103,7 +103,7 @@ class BluetoothReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         if (action != null && action.equals(BluetoothDevice.ACTION_NAME_CHANGED)) {
             BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-            if (--your device name or device category etc...--- && !discoverable) {
+            if ([your device name or device category etc...] && !discoverable) {
                 discoverable = true;
                 if (pair) {
                     initializeBond(bluetoothDevice);

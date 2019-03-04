@@ -317,3 +317,21 @@ header.masthead p {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+pre.code {
+  white-space: pre-wrap;
+}
+pre.code:before {
+  counter-reset: listing;
+}
+pre.code code {
+  counter-increment: listing;
+}
+pre.code code::before {
+  content: counter(listing) ". ";
+  display: inline-block;
+  width: 8em;         /* doesn't work */
+  padding-left: auto; /* doesn't work */
+  margin-left: auto;  /* doesn't work */
+  text-align: right;  /* doesn't work */
+}

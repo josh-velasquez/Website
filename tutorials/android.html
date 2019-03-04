@@ -116,94 +116,92 @@
         </div>
     </header>
     <section id="tutorials">
-            <div class="container">
-                <div id="kioskModeNav">
-                    <h5 class="mb-3">Kiosk Mode (Without Root)</h5>
-                    <p class="text-muted mb-0" style="font-size:85%">Since Android doesn't let you have full control
-                        over the whole operating
-                        system, you are quite limited as to what you can do to fully "lock-down" your device with your
-                        application (i.e. Kiosk mode). However, there are some workarounds to this if you spend enough
-                        time to tinker around. To simulate kiosk mode on Android for a full lockdown on an Android
-                        application, there are a few things you need to control. NOTE: THIS REQUIRES FULL ACCESS TO THE
-                        DEVICE YOU ARE APPLYING THE KIOSK MODE ON
-                    </p>
-                    <ol class="text-muted mb-0" style="font-size:85%">
-                        <li>
-                            <a>Status bar</a>
-                        </li>
-                        <li>
-                            <a>Back button</a>
-                        </li>
-                        <li>
-                            <a>Home button</a>
-                        </li>
-                        <li>
-                            <a>Multitask button</a>
-                        </li>
-                        <li>
-                            <a>Power and volume button</a>
-                        </li>
-                    </ol>
-                    <a onclick="controlVisibility('kioskmode');" style="font-size:85%">Learn more...</a>
-                    <div class="text-muted mb-0" id="kioskmode" style="display: none">
+        <div class="container">
+            <div id="kioskModeNav">
+                <h5 class="mb-3">Kiosk Mode (Without Root)</h5>
+                <p class="text-muted mb-0" style="font-size:85%">Since Android doesn't let you have full control
+                    over the whole operating system, you are quite limited as to what you can do to fully "lock-down"
+                    your device with your application (i.e. Kiosk mode). However, there are some workarounds to this if
+                    you spend enough time to tinker around. To simulate kiosk mode on Android for a full lockdown on an
+                    Android application, there are a few things you need to control. NOTE: THIS REQUIRES FULL ACCESS TO
+                    THE DEVICE YOU ARE APPLYING THE KIOSK MODE ON
+                </p>
+                <ol class="text-muted mb-0" style="font-size:85%">
+                    <li>
+                        <a>Status bar</a>
+                    </li>
+                    <li>
+                        <a>Back button</a>
+                    </li>
+                    <li>
+                        <a>Home button</a>
+                    </li>
+                    <li>
+                        <a>Multitask button</a>
+                    </li>
+                    <li>
+                        <a>Power and volume button</a>
+                    </li>
+                </ol>
+                <a onclick="controlVisibility('kioskmode');" style="font-size:85%">Learn more...</a>
+                <div class="text-muted mb-0" id="kioskmode" style="display: none">
+                    <br />
+                    <div>
+                        <h9>1. Status Bar</h9>
+                        <p style="font-size:85%">The easiest way to hide the status bar dropdown is to either hide
+                            it completely by setting the application to full screen</p>
+                        <iframe src="../code/android/kioskmode/fullscreen.txt" frameborder="1" height="100"
+                            width="500"></iframe>
                         <br />
-                        <div>
-                            <h9>1. Status Bar</h9>
-                            <p style="font-size:85%">The easiest way to hide the status bar dropdown is to either hide
-                                it completely by setting the application to full screen</p>
-                            <iframe src="../code/android/kioskmode/fullscreen.txt" frameborder="1" height="100"
-                                width="500"></iframe>
-                            <br />
-                            <p style="font-size:85%">However, if you do not want the user to fully deny users access to
-                                the status bar (to
-                                navigate out of the application) there is a simply hacky way of achieving this by
-                                creating an overlay
-                                that would rest on top of your application that will consume all touch inputs from the
-                                user (i.e.
-                                swiping down the status bar).</p>
-                            <iframe src="../code/android/kioskmode/statusbar.txt" frameborder="1" height="300"
-                                width="700"></iframe>
-                            <p style="font-size:85%">This code essentially draws a transparent bar on top of the status
-                                bar which consumes all touch events.</p>
-                        </div>
-                        <div>
-                            <h9>2. Back Button</h9>
-                            <iframe src="../code/android/kioskmode/backpressed.txt" frameborder="1" height="50"
-                                width="600"></iframe>
-                            <p style="font-size:85%">It's as simple as manually overriding the back button (Note: This
-                                disables back button navigation within your app. If you
-                                do not want to do this, simply override this in your activity and you'll be able to
-                                navigate back again)</p>
-                        </div>
-                        <div>
-                            <h9>3. Home Button</h9>
-                            <p style="font-size: 85%">This is a bit tricky to completely override. For this to actually
-                                be overriden, you need to set your application
-                                as the main launcher of the device itself. This can be easily done in the settings of
-                                the device and choosing your
-                                application as the default launcher for the device.</p>
-                        </div>
-                        <div>
-                            <h9>4. Multitask Button</h9>
-                            <p style="font-size:85%">The multitasking button allows you to switch between running apps
-                                and close them. This is not desireable! To have this button
-                                on lockdown, we need to override the method that is called whenever your app is toggled
-                                out. The onPause method is responsible
-                                for this. Basically, whenever you toggle out of your app, the onPause method is called.
-                            </p>
-                            <iframe src="../code/android/kioskmode/multitaskbutton.txt" height="150"
-                                width="600"></iframe>
-                            <p style="font-size:85%">This code basically forces your application to be at the front of
-                                all the applications open all the time which
-                                renders the multitasking button useless.</p>
-                        </div>
-                        <div>
-                            <h9>5. Power and Volume Buttons</h9>
+                        <p style="font-size:85%">However, if you do not want the user to fully deny users access to
+                            the status bar (to
+                            navigate out of the application) there is a simply hacky way of achieving this by
+                            creating an overlay
+                            that would rest on top of your application that will consume all touch inputs from the
+                            user (i.e.
+                            swiping down the status bar).</p>
+                        <iframe src="../code/android/kioskmode/statusbar.txt" frameborder="1" height="300"
+                            width="700"></iframe>
+                        <p style="font-size:85%">This code essentially draws a transparent bar on top of the status
+                            bar which consumes all touch events.</p>
+                    </div>
+                    <div>
+                        <h9>2. Back Button</h9>
+                        <iframe src="../code/android/kioskmode/backpressed.txt" frameborder="1" height="50"
+                            width="600"></iframe>
+                        <p style="font-size:85%">It's as simple as manually overriding the back button (Note: This
+                            disables back button navigation within your app. If you
+                            do not want to do this, simply override this in your activity and you'll be able to
+                            navigate back again)</p>
+                    </div>
+                    <div>
+                        <h9>3. Home Button</h9>
+                        <p style="font-size: 85%">This is a bit tricky to completely override. For this to actually
+                            be overriden, you need to set your application
+                            as the main launcher of the device itself. This can be easily done in the settings of
+                            the device and choosing your
+                            application as the default launcher for the device.</p>
+                    </div>
+                    <div>
+                        <h9>4. Multitask Button</h9>
+                        <p style="font-size:85%">The multitasking button allows you to switch between running apps
+                            and close them. This is not desireable! To have this button
+                            on lockdown, we need to override the method that is called whenever your app is toggled
+                            out. The onPause method is responsible
+                            for this. Basically, whenever you toggle out of your app, the onPause method is called.
+                        </p>
+                        <iframe src="../code/android/kioskmode/multitaskbutton.txt" height="150" width="600"></iframe>
+                        <p style="font-size:85%">This code basically forces your application to be at the front of
+                            all the applications open all the time which
+                            renders the multitasking button useless.</p>
+                    </div>
+                    <div>
+                        <h9>5. Power and Volume Buttons</h9>
 
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <br />
         <div class="container">

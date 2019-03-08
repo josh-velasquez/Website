@@ -30,10 +30,11 @@
 </head>
 
 <body id="page-top">
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="../index.html">Joshua Velasquez</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Joshua Velasquez</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -66,9 +67,9 @@
 
 
     <header class="masthead text-white d-flex">
-        <div class="container">
+        <div class="container my-auto">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10 mx-auto">
                     <div>
                         <h2 class="section-heading text-center">Android Tutorials</h2>
                         <hr class="my-4">
@@ -151,7 +152,7 @@
                         <p style="font-size:85%">The easiest way to hide the status bar dropdown is to either hide
                             it completely by setting the application to full screen</p>
                         <iframe src="../code/android/kioskmode/fullscreen.txt" frameborder="1" height="100"
-                            width="500"></iframe>
+                            width="700"></iframe>
                         <br />
                         <p style="font-size:85%">However, if you do not want the user to fully deny users access to
                             the status bar (to
@@ -167,6 +168,7 @@
                     </div>
                     <div>
                         <h9>2. Back Button</h9>
+                        <p style="font-size:85%">This one is easy!</p>
                         <iframe src="../code/android/kioskmode/backpressed.txt" frameborder="1" height="50"
                             width="600"></iframe>
                         <p style="font-size:85%">It's as simple as manually overriding the back button (Note: This
@@ -201,7 +203,7 @@
                             are received from the OS side. However, you can intercept these button presses and execute
                             your own code by creating a receiver that will listen for the button presses.
                         </p>
-                        <iframe src="../code/android/kioskmode/powervolume.txt" height="150" width="600"></iframe>
+                        <iframe src="../code/android/kioskmode/powervolume.txt" height="600" width="600"></iframe>
                         <p style="font-size:85%">Don't forget to register this receiver in the start of your main
                             activity so that it continuously listens in the background for these button presses.</p>
                     </div>
@@ -216,7 +218,20 @@
                 <p class="text-muted mb-0" style="font-size:85%">Android allows you to connect to various scanned WiFi
                     connections available in your area through settings. However, if you need WiFi scanning and
                     connection integrated within your app, an easy way to do it is to use Android's built in WifiManager
-                    in API's higher than 28 or Android Pie. Don't forget to add permissions!
+                    in API's higher than 28 or Android Pie. Another note to keep in mind is that networks that you have
+                    established outside your app (i.e. connecting to a WiFi network using the OS's settings) cannot be
+                    forgotten in your app. This is becuase Android does not allow cross network privilages between apps
+                    and the OS. However, if you did establish your network connection within your app, you are able to
+                    completely forget the network by just calling the disconnectNetwork() method. Don't forget to add
+                    permissions!
+                    <br />
+                    Don't forget to add these to your AndroidManifest and enable the permissions on the app settings:
+                    <br />
+                    <div style="color: red; font-size:85%">
+                        uses-permission android:name="android.permission.ACCESS_WIFI_STATE" </br>
+                        uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" </br>
+                        uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+                    </div>
                 </p>
                 <a onclick="controlVisibility('wifiConnection');" style="font-size:85%">Learn
                     more...</a>
@@ -239,6 +254,12 @@
                     bluetooth connections in settings, but you can also create your own in app bluetooth connection
                     manager where you can scan for all bluetooth device (or a specific bluetooth device), choose
                     a device to pair to, and remove bonded device(s).
+                    <br />
+                    <div style="color: red; font-size:85%">
+                        android:name="android.permission.BLUETOOTH" <br />
+                        android:name="android.permission.BLUETOOTH_ADMIN" <br />
+                        android:name="android.permission.ACCESS_COARSE_LOCATION"
+                    </div>
                 </p>
                 <a onclick="controlVisibility('bluetoothConnection');" style="font-size:85%">Learn more ...</a>
                 <div class="text-muted mb-0" id="bluetoothConnection" style="display: none">
@@ -256,7 +277,12 @@
                     experience. Though the accuracies of your translations might be a bit questionable (if not done by a
                     professional translator), having the option to switch between languages is always nice feature to
                     have in applications. Remember to call the restartApp() function to restart your application so that
-                    your language change is applied appropriately. LINK TO THE XML translator
+                    your language change is applied appropriately. This <a href="https://asrt.gluege.boerde.de/"
+                        target="_blank">links</a> to an online string resource translator where
+                    you could simply upload your string.xml file to be translated. They use Google's translator so it
+                    might not be 100% accurate. If you want to actually have an accurate translation, I recommend using
+                    <a href="https://www.deepl.com/en/translator" target="_blank">DeepL</a> for a more accurate
+                    translation.
                 </p>
                 <a onclick="controlVisibility('language');" style="font-size:85%">Learn more ...</a>
                 <div class="text-muted mb-0" id="language" style="display: none">
@@ -272,8 +298,9 @@
                 <p class="text-muted mb-0" style="font-size:85%">If you need graphing integration or animations that
                     relies heavily on
                     per frame basis, GraphView is a dependency must have for your application.
-                    It has a simple integration in your app that can transform an app to a modernized one. LINK
-                    TO GRAPHVIEW
+                    It has a simple integration in your app that can transform an app to a modernized one. Here's a <a
+                        href="http://www.android-graphview.org/">link </a> for GraphView. This powerful package allows
+                    you to draw amazing graphs easily.
                 </p>
             </div>
         </div>

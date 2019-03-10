@@ -1,0 +1,9 @@
+<pre>
+    <code>
+        public void ScreenSleep(Context context) {
+            PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "tag:off");
+            wakeLock.acquire();
+        }
+    </code>
+</pre>

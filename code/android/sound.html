@@ -1,0 +1,33 @@
+<pre>
+    <code>
+        import android.content.Context
+        import android.media.AudioManager
+        import android.media.MediaPlayer
+        
+        class SoundService(private val context: Context) {
+            fun playSound(soundResource: Int, volume: Float = 0.5f, loopTimes: Int = 0): MediaPlayer {
+                val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+                val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, (maxVolume * volume).toInt(), 0)
+                val mp = MediaPlayer.create(context, soundResource)
+                if (loopTimes == -1) {
+                    mp.isLooping = true
+                }
+                mp.setOnCompletionListener(object : MediaPlayer.OnCompletionListener {
+                    var timer = 0
+                    override fun onCompletion(mediaPlayer: MediaPlayer) {
+                        if (loopTimes > timer) {
+                            timer++
+                            mediaPlayer.seekTo(0)
+                            mediaPlayer.start()
+                        } else {
+                            mediaPlayer.release()
+                        }
+                    }
+                })
+                mp.start()
+                return mp
+            }
+        }        
+    </code>
+</pre>

@@ -1,0 +1,15 @@
+<pre>
+    <code>
+        public void toggleKeyboard(toggle: Boolean) {
+            if (toggle) {
+                if (getCurrentFocus() == null) return;
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+            else {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+            }
+        }
+    </code>
+</pre>

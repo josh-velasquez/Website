@@ -1,0 +1,115 @@
+<pre>
+    <code>
+        import android.content.BroadcastReceiver
+        import android.content.Context
+        import android.content.Context.WIFI_SERVICE
+        import android.content.Intent
+        import android.content.IntentFilter
+        import android.net.ConnectivityManager
+        import android.net.NetworkCapabilities
+        import android.net.NetworkInfo
+        import android.net.wifi.ScanResult
+        import android.net.wifi.WifiConfiguration
+        import android.net.wifi.WifiManager
+        
+        class WifiConnectionManager(private val context: Context) {
+            private var wifiManager: WifiManager? = null
+            var scanResult: List<ScanResult> = ArrayList()
+        
+            init {
+                wifiManager = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
+                val wifiScanReceiver = object : BroadcastReceiver() {
+                    override fun onReceive(context: Context, intent: Intent) {
+                        scanResult = wifiManager!!.scanResults
+                        context.unregisterReceiver(this)
+                    }
+                }
+                context.registerReceiver(wifiScanReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
+            }
+        
+            fun startScan(): List<ScanResult>? {
+                try {
+                    return wifiManager!!.scanResults
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                return null
+            }
+        
+            private fun checkLTEStatus(): Boolean {
+                val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val networks = connectivityManager.allNetworks
+                if (networks != null && networks.isNotEmpty()) {
+                    var info: NetworkInfo?
+                    for (network in networks) {
+                        info = connectivityManager.getNetworkInfo(network)
+                        if (info.isConnected && info.subtypeName.contains("LTE")) {
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+        
+            private fun checkWifiStatus(): Boolean {
+                Thread.sleep(5000)
+                val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val networks = connectivityManager.allNetworks
+                if (networks != null && networks.isNotEmpty()) {
+                    var info: NetworkInfo?
+                    for (network in networks) {
+                        info = connectivityManager.getNetworkInfo(network)
+                        if (info.isConnected && connectivityManager.getNetworkCapabilities(network).hasTransport(
+                                NetworkCapabilities.TRANSPORT_WIFI
+                            )
+                        ) {
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+        
+            fun startConnection(scanResult: ScanResult, passwordKey: String): Boolean {
+                val wifiConfiguration =
+                    if (scanResult.capabilities.contains("WPA") || scanResult.capabilities.contains("WPA2")) {
+                        wpaConfiguration(scanResult.SSID, passwordKey)
+                    } else if (scanResult.capabilities.contains("WEP")) {
+                        wepConfiguration(scanResult.SSID, passwordKey)
+                    } else
+                        return false
+        
+                wifiManager = context.getSystemService(WIFI_SERVICE) as WifiManager
+                val id = wifiManager!!.addNetwork(wifiConfiguration)
+                wifiManager!!.disconnect()
+                wifiManager!!.enableNetwork(id, true)
+                wifiManager!!.reconnect()
+                return checkWifiStatus()
+            }
+        
+            private fun wpaConfiguration(ssid: String, passwordKey: String): WifiConfiguration {
+                val wifiConfiguration = WifiConfiguration()
+                wifiConfiguration.SSID = String.format("\"%s\"", ssid)
+                wifiConfiguration.preSharedKey = String.format("\"%s\"", passwordKey)
+                wifiConfiguration.status = WifiConfiguration.Status.DISABLED
+                wifiConfiguration.allowedProtocols.set(WifiConfiguration.Protocol.RSN)
+                wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK)
+                wifiConfiguration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP)
+                wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP)
+                wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP)
+                return wifiConfiguration
+            }
+        
+            private fun wepConfiguration(ssid: String, passwordKey: String): WifiConfiguration {
+                val wifiConfiguration = WifiConfiguration()
+                wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE)
+                wifiConfiguration.allowedProtocols.set(WifiConfiguration.Protocol.RSN)
+                wifiConfiguration.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN)
+                wifiConfiguration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP)
+                wifiConfiguration.SSID = String.format("\"%s\"", ssid)
+                wifiConfiguration.preSharedKey = String.format("\"%s\"", passwordKey)
+                return wifiConfiguration
+            }
+        }
+    </code>
+</pre>

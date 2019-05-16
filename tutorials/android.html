@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Joshua Velasquez</a>
+            <a class="navbar-brand js-scroll-trigger" href="../index.html">Joshua Velasquez</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -73,8 +73,8 @@
                     <div>
                         <h2 class="section-heading text-center">Android Tutorials</h2>
                         <hr class="my-4">
-                        <p>This tutorial highlights the capabilities of the Android environment and how to do
-                            simple implementation of them in your application. Here are some examples that you can use:
+                        <p>This tutorial highlights the capabilities of Android Development and how to do
+                            simple implementations. Here are some examples that you can use:
                         </p>
                         <ul class="text-muted mb-0" style="font-size:85%">
                             <li>
@@ -125,7 +125,8 @@
                     your device with your application (i.e. Kiosk mode). However, there are some workarounds to this if
                     you spend enough time to tinker around. To simulate kiosk mode on Android for a full lockdown on an
                     Android application, there are a few things you need to control. NOTE: THIS REQUIRES FULL ACCESS TO
-                    THE DEVICE YOU ARE APPLYING THE KIOSK MODE ON
+                    THE DEVICE YOU ARE APPLYING THE KIOSK MODE ON. GOOGLE PLAYSTORE WILL NOT ALLOW YOU TO PUBLISH THESE 
+                    TYPE OF APPS AS IT REQUIRES ADMIN ACCESS
                 </p>
                 <ol class="text-muted mb-0" style="font-size:85%">
                     <li>
@@ -150,20 +151,22 @@
                     <div>
                         <h9>1. Status Bar</h9>
                         <p style="font-size:85%">The easiest way to hide the status bar dropdown is to either hide
-                            it completely by setting the application to full screen</p>
+                            it completely by setting the application to full screen. This is mainly used for game developers
+                            when they want their app to be fullscreen without any status bars</p>
                         <iframe src="../code/android/kioskmode/fullscreen.html" frameborder="1" height="100"
                             width="700"></iframe>
                         <br />
                         <p style="font-size:85%">However, if you do not want the user to fully deny users access to
                             the status bar (to
-                            navigate out of the application) there is a simply hacky way of achieving this by
+                            navigate out of the application) there is a simple hacky way of achieving this by
                             creating an overlay
                             that would rest on top of your application that will consume all touch inputs from the
                             user (i.e.
                             swiping down the status bar).</p>
                         <iframe src="../code/android/kioskmode/statusbar.html" frameborder="1" height="300"
                             width="700"></iframe>
-                        <p style="font-size:85%">This code essentially draws a transparent bar on top of the status
+                        <p style="font-size:85%">This code essentially creates a custom view group that is rendered on top of your app and 
+                            draws a transparent bar on top of the status
                             bar which consumes all touch events.</p>
                     </div>
                     <div>
@@ -210,7 +213,6 @@
                 </div>
             </div>
         </div>
-        </div>
         <br />
         <div class="container">
             <div id="wifiConnectionNav">
@@ -226,13 +228,11 @@
                     permissions!
                     <br />
                     Don't forget to add these to your AndroidManifest and enable the permissions on the app settings:
-                    <br />
                     <div style="color: red; font-size:85%">
-                        uses-permission android:name="android.permission.ACCESS_WIFI_STATE" </br>
-                        uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" </br>
+                        uses-permission android:name="android.permission.ACCESS_WIFI_STATE" 
+                        uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" 
                         uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
                     </div>
-                </p>
                 <a onclick="controlVisibility('wifiConnection');" style="font-size:85%">Learn
                     more...</a>
                 <div class="text-muted mb-0" id="wifiConnection" style="display: none">
@@ -253,14 +253,17 @@
                 <p class="text-muted mb-0" style="font-size:85%">Android allows you total control over available
                     bluetooth connections in settings, but you can also create your own in app bluetooth connection
                     manager where you can scan for all bluetooth device (or a specific bluetooth device), choose
-                    a device to pair to, and remove bonded device(s).
+                    a device to pair to, and remove bonded device(s). Please note that the Android Virtual Devices (AVD) do
+                    not support bluetooth connections. That being said, you cannot connect a bluetooth device to your 
+                    simulated android device. If you want to test out this functionality, an actual android device must be used.
+                    There are "ways" to connect a device to your simulated android through bluetooth (ex. through virtual box) but 
+                    this method is quite outdated and only supports old versions of android.
                     <br />
                     <div style="color: red; font-size:85%">
                         android:name="android.permission.BLUETOOTH" <br />
                         android:name="android.permission.BLUETOOTH_ADMIN" <br />
                         android:name="android.permission.ACCESS_COARSE_LOCATION"
                     </div>
-                </p>
                 <a onclick="controlVisibility('bluetoothConnection');" style="font-size:85%">Learn more ...</a>
                 <div class="text-muted mb-0" id="bluetoothConnection" style="display: none">
                     <br />

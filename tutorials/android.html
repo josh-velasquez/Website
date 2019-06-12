@@ -289,7 +289,7 @@
                         <a href="https://www.deepl.com/en/translator" target="_blank">DeepL</a> for a more accurate
                         translation.
                     </p>
-                    <a onclick="controlVisibility('language');" style="font-size:85%">Learn more ...</a>
+                    <button onclick="controlVisibility('language');" class="button" style="font-size:85%">Learn more ...</button>
                     <div class="text-muted mb-0" id="language" style="display: none">
                         <br />
                         <iframe src="../code/android/language.html" height="500" width="650"></iframe>
@@ -311,105 +311,112 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div id="playingSoundsNav">
-                <h5 class="mb-3">Playing Sounds</h5>
-                <p class="text-muted mb-0" style="font-size:85%">Sound effects can add creativeness in your creation
-                    when used wisely.
-                    Having more than one sound effects can definitely be hard to maintain if they're
-                    used in more than one activity.
-                </p>
-                <a onclick="controlVisibility('sound');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="sound" style="display: none">
-                    <br />
-                    <iframe src="../code/android/sound.html" height="500" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="playingSoundsNav">
+                    <h5 class="mb-3">Playing Sounds</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">Sound effects can add creativeness in your creation
+                        when used wisely.
+                        Having more than one sound effects can definitely be hard to maintain if they're
+                        used in more than one activity.
+                    </p>
+                    <button onclick="controlVisibility('sound');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="sound" style="display: none">
+                        <br />
+                        <iframe src="../code/android/sound.html" height="500" width="650"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container">
-            <div id="playingVideosNav">
-                <h5 class="mb-3">Playing Videos</h5>
-                <p class="text-muted mb-0" style="font-size:85%">Video's are often useful for developers to either
-                    advertise or to
-                    show instructions within their app. Creating a custom video loader is a must whenever you have more
-                    than one video to show your users.
-                </p>
-                <a onclick="controlVisibility('videos');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="videos" style="display: none">
-                    <br />
-                    <iframe src="../code/android/videos.html" height="200" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="playingVideosNav">
+                    <h5 class="mb-3">Playing Videos</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">Video's are often useful for developers to either
+                        advertise or to
+                        show instructions within their app. Creating a custom video loader is a must whenever you have more
+                        than one video to show your users.
+                    </p>
+                    <button onclick="controlVisibility('videos');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="videos" style="display: none">
+                        <br />
+                        <iframe src="../code/android/videos.html" height="200" width="650"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container">
-            <div id="controlBrightnessNav">
-                <h5 class="mb-3">Controlling Brightness</h5>
-                <p class="text-muted mb-0" style="font-size:85%">The brightness of your device can sometimes affect the
-                    overall funcitonality
-                    of your app. Due to this, developers often manually control the brightness of their application to
-                    better suit their needs. This code allows you to control the brightness of your application.
-                </p>
-                <a onclick="controlVisibility('brightness');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="brightness" style="display: none">
-                    <br />
-                    <iframe src="../code/android/controlbrightness.html" height="250" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="controlBrightnessNav">
+                    <h5 class="mb-3">Controlling Brightness</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">The brightness of your device can sometimes affect the
+                        overall funcitonality
+                        of your app. Due to this, developers often manually control the brightness of their application to
+                        better suit their needs. This code allows you to control the brightness of your application.
+                    </p>
+                    <button onclick="controlVisibility('brightness');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="brightness" style="display: none">
+                        <br />
+                        <iframe src="../code/android/controlbrightness.html" height="250" width="650"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container">
-            <div id="keyboardNav">
-                <h5 class="mb-3">Showing and Hiding Keyboard</h5>
-                <p class="text-muted mb-0" style="font-size:85%">Keyboards are useful for user input. However, if you've
-                    been developing on
-                    Android for sometime, you'll notice that sometimes the keyboard won't toggle on or toggle off when
-                    you want to.
-                </p>
-                <a onclick="controlVisibility('keyboard');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="keyboard" style="display: none">
-                    <br />
-                    <iframe src="../code/android/keyboardtoggle.html" height="300" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="keyboardNav">
+                    <h5 class="mb-3">Showing and Hiding Keyboard</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">Keyboards are useful for user input. However, if you've
+                        been developing on
+                        Android for sometime, you'll notice that sometimes the keyboard won't toggle on or toggle off when
+                        you want to.
+                    </p>
+                    <button onclick="controlVisibility('keyboard');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="keyboard" style="display: none">
+                        <br />
+                        <iframe src="../code/android/keyboardtoggle.html" height="300" width="650"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container">
-            <div id="screenSleepNav">
-                <h5 class="mb-3">Screen Sleep</h5>
-                <p class="text-muted mb-0" style="font-size:85%">If you want to run your app for a long period,
-                    sometimes its handy to turn
-                    the screen off so that you save battery power. This code forces your device to sleep so that you
-                    don't drain as much energy to power on the screen of your device. NOTE: IF YOU WANT YOUR APPLICATION
-                    TO RUN WHILE YOUR TABLET IS ASLEEP, MAKE SURE YOU TURN THE CPU ON SO THAT THE OS DOES NOT KILL YOUR
-                    APPLICATION IN THE BACKGROUND.
-                </p>
-                <a onclick="controlVisibility('sleep');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="sleep" style="display: none">
-                    <br />
-                    <iframe src="../code/android/screensleep.html" height="200" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="screenSleepNav">
+                    <h5 class="mb-3">Screen Sleep</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">If you want to run your app for a long period,
+                        sometimes its handy to turn
+                        the screen off so that you save battery power. This code forces your device to sleep so that you
+                        don't drain as much energy to power on the screen of your device. NOTE: IF YOU WANT YOUR APPLICATION
+                        TO RUN WHILE YOUR TABLET IS ASLEEP, MAKE SURE YOU TURN THE CPU ON SO THAT THE OS DOES NOT KILL YOUR
+                        APPLICATION IN THE BACKGROUND.
+                    </p>
+                    <button onclick="controlVisibility('sleep');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="sleep" style="display: none">
+                        <br />
+                        <iframe src="../code/android/screensleep.html" height="200" width="650"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container">
-            <div id="sharedPrefNav">
-                <h5 class="mb-3">Saving to Shared Preferences</h5>
-                <p class="text-muted mb-0" style="font-size:85%">When you need to save something temporarily (i.e.
-                    tokens, passwords,
-                    settings, etc...) Android allows you to save them to shared preferences. Shared preferences is a
-                    file specific to your application to which only your application can access. With this, you can read
-                    and write to this whatever you want. This is very useful when you want to save a setting for example
-                    that you want to be unique for every device (Ex. language).
-                </p>
-                <a onclick="controlVisibility('sharedpreferences');" style="font-size:85%">Learn more ...</a>
-                <div class="text-muted mb-0" id="sharedpreferences" style="display: none">
-                    <br />
-                    <iframe src="../code/android/sharedpreferences.html" height="200" width="650"></iframe>
+        <div class="card">
+            <div class="container">
+                <div id="sharedPrefNav">
+                    <h5 class="mb-3">Saving to Shared Preferences</h5>
+                    <p class="text-muted mb-0" style="font-size:85%">When you need to save something temporarily (i.e.
+                        tokens, passwords,
+                        settings, etc...) Android allows you to save them to shared preferences. Shared preferences is a
+                        file specific to your application to which only your application can access. With this, you can read
+                        and write to this whatever you want. This is very useful when you want to save a setting for example
+                        that you want to be unique for every device (Ex. language).
+                    </p>
+                    <button onclick="controlVisibility('sharedpreferences');" class="button" style="font-size:85%">Learn more ...</button>
+                    <div class="text-muted mb-0" id="sharedpreferences" style="display: none">
+                        <br />
+                        <iframe src="../code/android/sharedpreferences.html" height="200" width="650"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>>
     </section>
 
 

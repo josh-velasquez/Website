@@ -1,72 +1,121 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <title>Joshua Velasquez</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Joshua Velasquez</title>
 </head>
 
 <body>
-  <div>
-    <img width="10%" height="10%" src="assets/ProfilePic.png" />
-  </div>
-
-  <nav class="navbar">
-    <span><a style="color: red;" href="#">HOME</a></span>
-    <span><a href="projects.html">PROJECTS</a></span>
-    <span><a href="tutorials.html">TUTORIALS</a></span>
-  </nav>
-
-  <div class="content">
-    <div class="banner">
-      <h1>Design. Create. Innovate.</h1>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#home">Joshua Velasquez</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#aboutme">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tutorials">Tutorials</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="home" style="background-image: url(assets/homebg.jpg); background-position: center; background-repeat: no-repeat; height: 1000px; width: 100%;">
+        <div class="container" style="text-align: center; padding-top: 25%;">
+            <img style="background-position: center; height: 200px; width: 17%;" src="assets/ProfilePic.png" />
+            <div class="p-5 text-center">
+                <h1 class="mb-3" style="color: #EF6046;">Design. Create. Innovate.</h1>
+            </div>
+        </div>
     </div>
-
-    <div class="body">
-      <a href="prices.html" class="button">Find out more!</a>
-      <div class="floating-card">
-        <div class="card">
-          <img src="assets/netcore.png" />
-          <h5>.NET Core</h5>
-          <p>C# developement front and backend.</p>
+    <div id="aboutme" style="background-color: #EF6046; height: 400px;">
+        <div class="container" style="text-align: center; color: whitesmoke; padding-top: 10%;">
+            <h2>About Me</h2>
+            <hr />
+            <div class="subheading">Computer Science major and a minor in Applied Mathematics. Software developer with a passion for technology, innovation, and pc building.</div>
         </div>
-        <div class="card">
-          <img src="assets/android.png" />
-          <h5>Android</h5>
-          <p>Android Application developement both native Android Studios and Xamarin.</p>
-        </div>
-        <div class="card">
-          <img src="assets/html.png" />
-          <h5>Websites</h5>
-          <p>
-            HTML, CSS, Databases, React.
-          </p>
-        </div>
-        <div class="card">
-          <img src="assets/raspberrypi.png" />
-          <h5>Assembly</h5>
-          <p>Low level computing.</p>
-        </div>
-      </div>
     </div>
-  </div>
+    <div id="experience" style="background-color: whitesmoke; height: 600px;">
+        <div class="container" style="text-align: center; color: whitesmoke; padding-top: 10%; color: black;">
+            <h2>Experience</h2>
+            <hr />
+            <div class="container" style="display: flex">
+                <div class="cards">
+                    <img src="assets/netcore.png" />
+                    <p>C# development front and back-end.</p>
+                </div>
+                <div class="cards">
+                    <img src="assets/android.png" />
+                    <p>Android Application developement both native Android Studios and Xamarin.</p>
+                </div>
+                <div class="cards">
+                    <img src="assets/html.png" />
+                    <p>HTML, CSS, Databases, React.</p>
+                </div>
+                <div class="cards">
+                    <img src="assets/raspberrypi.png" />
+                    <p>Low level computing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="projects" style="background-color: #323232; height: 1000px;">
+        <div class="container-fluid" style="text-align: center; color: whitesmoke; padding-top: 13%;">
+            <h2>Projects</h2>
+            <hr/>
+            <div class="row">
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+                <div class="project-card col">
+                    <img src="assets/netcore.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tutorials" style="background-color: black; height: 1000px;">
+        <div class="container" style="text-align: center; color: whitesmoke; padding-top: 13%;">
+            <h2>Tutorials</h2>
+        </div>
+    </div>
+    <footer class="contacts fixed-bottom bg-dark">
+        <div class="contact">
+            <div>
+                <a href="https://www.linkedin.com/in/joshleevelasquez"><img class="icon" src="assets/linkedin.png" /></a>
+            </div>
+            <div>
+                <a href="mailto:joshvelasquez6@gmail.com">
+                    <img class="icon" src="assets/mail.png" />
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
-<footer>
-  <h4 class="contact-title">Contact me</h4>
-  <div class="contact">
-    <div>
-      <a href="https://www.linkedin.com/in/joshleevelasquez"><img class="icon" src="assets/linkedin.png" /></a>
-    </div>
-    <div>
-      <a href="mailto:joshvelasquez6@gmail.com">
-        <img class="icon" src="assets/mail.png" />
-      </a>
-    </div>
-    <div>
-      <a href="https://josh-velasquez.github.io/Website/index.html"><img class="icon" src="assets/website.png" /></a>
-    </div>
-  </div>
-</footer>
 
 </html>

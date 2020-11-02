@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#tutorials">Tutorials</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#github">GitHub</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -74,27 +77,39 @@
     <div id="projects" style="background-color: #323232; height: 1000px;">
         <div class="container-fluid" style="text-align: center; color: whitesmoke; padding-top: 13%;">
             <h2>Projects</h2>
-            <hr/>
+            <hr />
             <div class="row">
                 <div class="project-card col">
-                    <img src="assets/netcore.png" />
+                    <a target="_blank" href="https://github.com/josh-velasquez/Twijj">
+                        <h2>Twijj</h2>
+                        <img src="assets/netcore.png" />
+                    </a>
                 </div>
                 <div class="project-card col">
-                    <img src="assets/netcore.png" />
+                    <a target="_blank" href="https://github.com/josh-velasquez/AndroidTools">
+                        <h2>Android Tools</h2>
+                        <img src="assets/netcore.png" />
+                    </a>
                 </div>
                 <div class="project-card col">
-                    <img src="assets/netcore.png" />
+                    <a target="_blank" href="https://github.com/josh-velasquez/BaseConverter">
+                        <h2>Base Converter</h2>
+                        <img src="assets/netcore.png" />
+                    </a>
                 </div>
             </div>
             <div class="row">
                 <div class="project-card col">
-                    <img src="assets/netcore.png" />
+                    <a target="_blank" href="https://github.com/josh-velasquez/ColourPick">
+                        <h2>Colour Pick</h2>
+                        <img src="assets/netcore.png" />
+                    </a>
                 </div>
                 <div class="project-card col">
-                    <img src="assets/netcore.png" />
-                </div>
-                <div class="project-card col">
-                    <img src="assets/netcore.png" />
+                    <a target="_blank" href="https://github.com/josh-velasquez/KeyLogger">
+                        <h2>Keylogger</h2>
+                        <img src="assets/netcore.png" />
+                    </a>
                 </div>
             </div>
         </div>
@@ -102,6 +117,14 @@
     <div id="tutorials" style="background-color: black; height: 1000px;">
         <div class="container" style="text-align: center; color: whitesmoke; padding-top: 13%;">
             <h2>Tutorials</h2>
+            <p>As I spend time developing software, I learned more and more techniques that I hope to share just in case StackOverflow can't provide the answers you're looking for (though that is rarely the case). Here are some techniques you can use in
+                your own software.</p>
+        </div>
+    </div>
+    <div id="github" style="background-color: #323232;">
+        <div class="container" style="text-align: center; color: whitesmoke; padding: 13% 13%;">
+            <h2>Check out my GitHub!</h2>
+            <a href="https://github.com/josh-velasquez" target="_blank" class="btn btn-light btn-lg" role="button" aria-pressed="true">LET'S GO!</a>
         </div>
     </div>
     <footer class="contacts fixed-bottom bg-dark">
@@ -116,6 +139,17 @@
             </div>
         </div>
     </footer>
+    <script>
+        $(document).ready(function() {
+
+            $("div").mouseenter(function() {
+                var id = $(this).attr('id');
+                $('a').removeClass('active');
+                $("[href=#" + id + "]").addClass('active');
+            });
+
+        });
+    </script>
 </body>
 
 </html>

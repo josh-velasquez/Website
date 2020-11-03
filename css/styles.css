@@ -54,3 +54,37 @@ footer {
     transition: 500ms;
     border-bottom: 2px solid transparent;
 }
+
+.header {
+    color: whitesmoke;
+}
+
+.banner {
+    background-image: url(../assets/homebg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1000px;
+    width: 100%;
+}
+
+.page {
+    text-align: center;
+    justify-content: center;
+    position: relative;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.card :hover {
+    /* #EF6046 */
+}
+
+.fade {
+    opacity: 1;
+}

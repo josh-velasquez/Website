@@ -38,10 +38,37 @@ footer {
     width: 200px;
     box-shadow: 0 2px 10px 0 black;
     transition: 0.3s;
+    position: relative;
 }
 
-.project-card :hover {
+.overlay a h2 {
+    color: whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.project-card:hover .overlay {
     background-color: #EF6046;
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    border-radius: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
 }
 
 .contact {

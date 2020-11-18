@@ -161,7 +161,7 @@ footer {
 
 .collapse-content {
     padding: 0 18px;
-    background-color: white;
+    background-color: whitesmoke;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -174,42 +174,12 @@ footer {
     width: 100%;
 }
 
-
-/* 
-.collapse-content-link {
+.collapse-code {
     padding: 0 18px;
-     background-color: white; 
+    background-color: white;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    height: 200px;
-}
-
-.collapsible-link {
-    background-color: #323232;
-    color: whitesmoke;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
     text-align: left;
-    outline: none;
-    font-size: 15px;
+    display: block;
 }
-
-.active,
-.collapsible-link:hover {
-    background-color: #ef6046;
-}
-
-.collapsible-link:after {
-    content: '\02795';
-    font-size: 13px;
-    color: white;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    content: "\2796";
-} */

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Box, Modal, Typography, Button } from '@mui/material';
+import { Pets as CatIcon, WaterDrop } from '@mui/icons-material';
 
 interface GameObject {
   x: number;
@@ -14,11 +15,12 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  
   const playerRef = useRef<GameObject>({
     x: 50,
     y: 300,
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
     speed: 5
   });
   const obstaclesRef = useRef<GameObject[]>([]);
@@ -43,7 +45,21 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
     obstaclesRef.current = [];
     playerRef.current.y = canvas.height / 2;
 
+    const drawIcon = (ctx: CanvasRenderingContext2D, icon: string, x: number, y: number, size: number, color: string) => {
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.font = `${size}px "Material Icons"`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(icon, x + size/2, y + size/2);
+      ctx.restore();
+    };
+
+    let isGameRunning = true;
+
     const gameLoop = () => {
+      if (!isGameRunning) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Player movement
@@ -54,33 +70,33 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
       // Keep player in bounds
       player.y = Math.max(0, Math.min(canvas.height - player.height, player.y));
 
-      // Draw player
-      ctx.fillStyle = '#9580FF';
-      ctx.fillRect(player.x, player.y, player.width, player.height);
+      // Draw player (cat)
+      drawIcon(ctx, 'pets', player.x, player.y, player.width, '#9580FF');
       
       // Update and draw obstacles
       obstaclesRef.current = obstaclesRef.current.filter(obstacle => {
         obstacle.x -= obstacle.speed;
         
-        // Check collision
+        // Check collision with slightly smaller hitbox for fairness
+        const hitboxPadding = 8;
         if (
-          player.x < obstacle.x + obstacle.width &&
-          player.x + player.width > obstacle.x &&
-          player.y < obstacle.y + obstacle.height &&
-          player.y + player.height > obstacle.y
+          player.x < obstacle.x + obstacle.width - hitboxPadding &&
+          player.x + player.width - hitboxPadding > obstacle.x &&
+          player.y < obstacle.y + obstacle.height - hitboxPadding &&
+          player.y + player.height - hitboxPadding > obstacle.y
         ) {
           setGameOver(true);
+          isGameRunning = false;
           return false;
         }
 
-        // Draw obstacle
-        ctx.fillStyle = '#FF80BF';
-        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        // Draw obstacle (water drop)
+        drawIcon(ctx, 'water_drop', obstacle.x, obstacle.y, obstacle.width, '#FF80BF');
         
         return obstacle.x > -obstacle.width;
       });
 
-      if (!gameOver) {
+      if (isGameRunning) {
         setScore(prev => prev + 0.1);
         animationFrameRef.current = requestAnimationFrame(gameLoop);
       }
@@ -88,25 +104,36 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
 
     gameLoopRef.current = gameLoop;
 
-    const spawnObstacle = () => {
-      obstaclesRef.current.push({
-        x: canvas.width,
-        y: Math.random() * (canvas.height - 50),
-        width: 20,
-        height: 20,
-        speed: 3 + Math.random() * 2
-      });
-    };
+    // Load Material Icons font
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
 
-    const obstacleInterval = setInterval(spawnObstacle, 2000);
-    animationFrameRef.current = requestAnimationFrame(gameLoop);
+    // Wait for font to load
+    document.fonts.ready.then(() => {
+      const spawnObstacle = () => {
+        if (!isGameRunning) return;
+        obstaclesRef.current.push({
+          x: canvas.width,
+          y: Math.random() * (canvas.height - 50),
+          width: 30,
+          height: 30,
+          speed: 3 + Math.random() * 2
+        });
+      };
 
-    return () => {
-      clearInterval(obstacleInterval);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
+      const obstacleInterval = setInterval(spawnObstacle, 2000);
+      animationFrameRef.current = requestAnimationFrame(gameLoop);
+
+      return () => {
+        isGameRunning = false;
+        clearInterval(obstacleInterval);
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+        }
+      };
+    });
   }, [gameStarted, gameOver]);
 
   // Handle keyboard events
@@ -183,10 +210,10 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
         ) : !gameStarted ? (
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h4" color="primary" gutterBottom>
-              Mini Game
+              Cat Dodge!
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 3 }}>
-              Use ↑ and ↓ arrow keys to avoid obstacles
+              Help the cat avoid the water drops using ↑ and ↓ arrow keys
             </Typography>
             <Button 
               variant="contained" 

@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { darkTheme } from './theme';
 import Background from './components/Background';
 import Header from './components/Header';
-import About from './components/About';
+import AboutContainer from './components/AboutContainer';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
+import ProjectsContainer from './components/ProjectsContainer';
+import ExperienceContainer from './components/ExperienceContainer';
+import MiniGame from './components/MiniGame';
+import EasterEggHint from './components/EasterEggHint';
 
 function App() {
+  const [gameOpen, setGameOpen] = useState(false);
+  const [secretCode, setSecretCode] = useState('');
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      setSecretCode(prev => {
+        const newCode = (prev + e.key).slice(-4);
+        if (newCode === 'game') {
+          setGameOpen(true);
+          return '';
+        }
+        return newCode;
+      });
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+    return () => window.removeEventListener('keypress', handleKeyPress);
+  }, []);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -16,12 +37,14 @@ function App() {
       <div className="App">
         <Header />
         <main>
-          <About />
+          <AboutContainer />
           <Skills />
-          <Projects />
-          <Experience />
+          <ProjectsContainer />
+          <ExperienceContainer />
         </main>
+        <EasterEggHint />
       </div>
+      <MiniGame open={gameOpen} onClose={() => setGameOpen(false)} />
     </ThemeProvider>
   );
 }

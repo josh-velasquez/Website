@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Container, Typography, Box, Grid, Chip } from '@mui/material';
 import { Code, Storage, Cloud } from '@mui/icons-material';
 
-const About: React.FC = () => {
+const AboutContainer: React.FC = () => {
   return (
     <Box
       component="section"
@@ -100,4 +100,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About; 
+export default AboutContainer; 

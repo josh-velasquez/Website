@@ -71,7 +71,7 @@ const projects: Project[] = [
   }
 ];
 
-const Projects: React.FC = () => {
+const ProjectsContainer: React.FC = () => {
   return (
     <Box
       component="section"
@@ -154,4 +154,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects; 
+export default ProjectsContainer; 

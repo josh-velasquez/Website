@@ -80,22 +80,6 @@ section {
   margin: 0 auto;
 }
 
-.contact-info {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #f5f5f5;
-  padding: 2rem;
-  border-radius: 8px;
-}
-
-.contact-info a {
-  color: #61dafb;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
 
 .about-content {
   display: flex;
@@ -142,65 +126,3 @@ section {
   display: inline-block;
   font-size: 0.9rem;
 }
-
-.contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 0.8rem;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.contact-form textarea {
-  min-height: 150px;
-}
-
-.contact-form button {
-  background: #61dafb;
-  color: #282c34;
-  padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.contact-form button:hover {
-  background: #282c34;
-  color: #61dafb;
-}
-
-.contact-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-  .about-content,
-  .contact-container {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-  
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-} 

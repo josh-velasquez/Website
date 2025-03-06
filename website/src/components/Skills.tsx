@@ -38,11 +38,11 @@ const skillCategories: SkillCategory[] = [
     title: "Frontend Development",
     icon: <WebIcon fontSize="large" />,
     skills: [
-      { name: "React/Next.js", icon: <WebIcon /> },
+      { name: "React", icon: <WebIcon /> },
       { name: "TypeScript", icon: <TypeScriptIcon /> },
       { name: "Redux/Context API", icon: <DataIcon /> },
       { name: "Responsive Design", icon: <SpeedIcon /> },
-      { name: "Material UI/Tailwind", icon: <LanguageIcon /> },
+      { name: "Material UI", icon: <LanguageIcon /> },
     ]
   },
   {
@@ -50,19 +50,19 @@ const skillCategories: SkillCategory[] = [
     icon: <CodeIcon fontSize="large" />,
     skills: [
       { name: "Node.js/Express", icon: <JavaScriptIcon /> },
+      { name: "GraphQL", icon: <GraphQLIcon /> },
       { name: "Spring Boot", icon: <CodeIcon /> },
       { name: ".NET Core", icon: <CodeIcon /> },
       { name: "RESTful APIs", icon: <ApiIcon /> },
-      { name: "GraphQL", icon: <GraphQLIcon /> },
     ]
   },
   {
     title: "Database & Cache",
     icon: <StorageIcon fontSize="large" />,
     skills: [
-      { name: "MongoDB", icon: <DatabaseIcon /> },
       { name: "PostgreSQL", icon: <StorageIcon /> },
       { name: "Redis", icon: <RedisIcon /> },
+      { name: "MySQL", icon: <DatabaseIcon /> },
       { name: "Data Modeling", icon: <ArchitectureIcon /> },
       { name: "Query Optimization", icon: <SpeedIcon /> },
     ]
@@ -159,29 +159,70 @@ const Skills: React.FC = () => {
                   <Card
                     sx={{
                       height: '100%',
-                      background: 'linear-gradient(145deg, rgba(25,15,15,0.9) 0%, rgba(25,15,15,0.6) 100%)',
+                      background: 'linear-gradient(145deg, rgba(31, 27, 46, 0.6) 0%, rgba(31, 27, 46, 0.9) 100%)',
                       backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,99,99,0.1)',
+                      border: '1px solid rgba(149, 128, 255, 0.1)',
+                      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '100%',
+                        background: 'linear-gradient(90deg, transparent, rgba(149, 128, 255, 0.1), transparent)',
+                        transform: 'translateX(-100%)',
+                        transition: 'transform 0.5s ease',
+                      },
                       transition: 'all 0.3s ease',
                       '&:hover': {
                         transform: 'translateY(-8px)',
-                        border: '1px solid rgba(255,99,99,0.3)',
-                        boxShadow: '0 4px 20px rgba(255,99,99,0.2)',
+                        border: '1px solid rgba(149, 128, 255, 0.3)',
+                        boxShadow: '0 8px 30px rgba(149, 128, 255, 0.15)',
+                        '&::before': {
+                          transform: 'translateX(100%)',
+                        },
                       },
                     }}
                   >
                     <CardContent>
-                      <Box sx={{ textAlign: 'center', mb: 3 }}>
+                      <Box sx={{ 
+                        textAlign: 'center', 
+                        mb: 3,
+                        position: 'relative',
+                        '&::after': {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: '-10px',
+                          left: '50%',
+                          width: '40px',
+                          height: '2px',
+                          background: 'linear-gradient(90deg, rgba(149, 128, 255, 0), rgba(149, 128, 255, 0.5), rgba(149, 128, 255, 0))',
+                          transform: 'translateX(-50%)',
+                        }
+                      }}>
                         <Box sx={{ 
                           color: 'primary.main',
                           mb: 2,
+                          transform: 'scale(1.2)',
                           '& > svg': {
-                            filter: 'drop-shadow(0 0 8px rgba(255,99,99,0.3))',
+                            filter: 'drop-shadow(0 0 8px rgba(149, 128, 255, 0.5))',
                           }
                         }}>
                           {category.icon}
                         </Box>
-                        <Typography variant="h6" component="h3" color="primary" gutterBottom>
+                        <Typography 
+                          variant="h6" 
+                          component="h3" 
+                          color="primary" 
+                          gutterBottom
+                          sx={{
+                            fontWeight: 600,
+                            textShadow: '0 0 20px rgba(149, 128, 255, 0.3)',
+                          }}
+                        >
                           {category.title}
                         </Typography>
                       </Box>
@@ -193,12 +234,17 @@ const Skills: React.FC = () => {
                               display: 'flex',
                               alignItems: 'center',
                               gap: 2,
-                              p: 1,
-                              borderRadius: 1,
-                              transition: 'all 0.2s ease',
+                              p: 1.5,
+                              borderRadius: '8px',
+                              background: 'rgba(149, 128, 255, 0.03)',
+                              backdropFilter: 'blur(5px)',
+                              transition: 'all 0.3s ease',
+                              border: '1px solid rgba(149, 128, 255, 0.05)',
                               '&:hover': {
-                                bgcolor: 'rgba(255,99,99,0.1)',
+                                background: 'rgba(149, 128, 255, 0.1)',
                                 transform: 'translateX(8px)',
+                                border: '1px solid rgba(149, 128, 255, 0.2)',
+                                boxShadow: '0 4px 15px rgba(149, 128, 255, 0.1)',
                               },
                             }}
                           >
@@ -208,13 +254,22 @@ const Skills: React.FC = () => {
                               alignItems: 'center',
                               fontSize: '1.2rem',
                               transition: 'all 0.2s ease',
+                              '& > svg': {
+                                filter: 'drop-shadow(0 0 4px rgba(149, 128, 255, 0.3))',
+                              },
                               '&:hover': {
-                                filter: 'drop-shadow(0 0 4px rgba(255,99,99,0.5))',
+                                transform: 'scale(1.1)',
+                                filter: 'drop-shadow(0 0 8px rgba(149, 128, 255, 0.5))',
                               }
                             }}>
                               {skill.icon}
                             </Box>
-                            <Typography>{skill.name}</Typography>
+                            <Typography sx={{ 
+                              fontWeight: 500,
+                              color: 'text.primary',
+                            }}>
+                              {skill.name}
+                            </Typography>
                           </Box>
                         ))}
                       </Box>

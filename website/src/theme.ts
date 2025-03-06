@@ -4,18 +4,18 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#ff6363',
-      light: '#ff8585',
-      dark: '#cc4040',
+      main: '#9580FF',     // Purple
+      light: '#B8A8FF',    // Light purple
+      dark: '#7B61FF',     // Dark purple
     },
     secondary: {
-      main: '#be4bdb',
-      light: '#da77f2',
-      dark: '#9c36b5',
+      main: '#FF80BF',     // Pink
+      light: '#FFA8D4',    // Light pink
+      dark: '#FF61B0',     // Dark pink
     },
     background: {
-      default: '#0f0a0a',
-      paper: 'rgba(20, 15, 15, 0.7)',
+      default: '#13111C',  // Dark background
+      paper: 'rgba(31, 27, 46, 0.7)', // Slightly lighter with transparency
     },
     text: {
       primary: '#ffffff',

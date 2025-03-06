@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/website/static/js/main.24d167b5.js",
+    "static/media/twijj.png": "/website/static/media/twijj.f98cfa9c58a98c5fe150.png",
+    "static/media/fiblepage.png": "/website/static/media/fiblepage.30e6dac31e7459f62ee0.png",
+    "static/media/typingduck.png": "/website/static/media/typingduck.c9008a91f824a62409fb.png",
+    "static/media/stracker.png": "/website/static/media/stracker.09db496b74b4c26fb055.png",
+    "static/media/ProfilePic.png": "/website/static/media/ProfilePic.53e854b9168a2f6d1b1a.png",
+    "static/media/cat.png": "/website/static/media/cat.650c27c772d38b5f342c.png",
+    "static/media/colourpick.png": "/website/static/media/colourpick.4e322da93e36fafbfc0e.png",
+    "index.html": "/website/index.html",
+    "main.24d167b5.js.map": "/website/static/js/main.24d167b5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.24d167b5.js"
+  ]
+}

@@ -1,7 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Container, Typography, Box, Grid, Chip } from '@mui/material';
-import { Code, Storage, Cloud } from '@mui/icons-material';
+import React from "react";
+import { motion } from "framer-motion";
+import { Container, Typography, Box, Grid, Chip } from "@mui/material";
+import { Code, Storage, Cloud } from "@mui/icons-material";
+import profilePic from "../../assets/ProfilePic.png";
 
 const AboutContainer: React.FC = () => {
   return (
@@ -25,16 +26,26 @@ const AboutContainer: React.FC = () => {
               <Typography variant="h2" component="h2" gutterBottom>
                 About Me
               </Typography>
-              <Typography variant="body1" paragraph sx={{ color: 'text.secondary' }}>
-                I'm a passionate Full Stack Developer with extensive experience in building modern web applications. 
-                I specialize in React, TypeScript, Node.js, and cloud technologies.
+              <Typography
+                variant="body1"
+                paragraph
+                sx={{ color: "text.secondary" }}
+              >
+                I'm a passionate Full Stack Developer with extensive experience
+                in building modern web applications. I specialize in React,
+                TypeScript, Node.js, and cloud technologies.
               </Typography>
-              <Typography variant="body1" paragraph sx={{ color: 'text.secondary' }}>
-                With a strong foundation in both frontend and backend development, I enjoy creating 
-                scalable solutions that solve real-world problems. I'm particularly interested in 
-                cloud architecture and microservices.
+              <Typography
+                variant="body1"
+                paragraph
+                sx={{ color: "text.secondary" }}
+              >
+                With a strong foundation in both frontend and backend
+                development, I enjoy creating scalable solutions that solve
+                real-world problems. I'm particularly interested in cloud
+                architecture and microservices.
               </Typography>
-              <Box sx={{ mt: 4, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              <Box sx={{ mt: 4, display: "flex", gap: 2, flexWrap: "wrap" }}>
                 <Chip
                   icon={<Code />}
                   label="Full Stack Development"
@@ -65,30 +76,34 @@ const AboutContainer: React.FC = () => {
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  '&::before': {
+                  position: "relative",
+                  width: "300px",
+                  height: "300px",
+                  margin: "0 auto",
+                  "&::before": {
                     content: '""',
-                    position: 'absolute',
-                    top: 20,
-                    left: 20,
-                    right: -20,
-                    bottom: -20,
-                    border: '2px solid',
-                    borderColor: 'primary.main',
+                    position: "absolute",
+                    top: -10,
+                    left: -10,
+                    right: 15,
+                    bottom: -10,
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     borderRadius: 2,
-                  }
+                  },
                 }}
               >
                 <Box
                   component="img"
-                  src="/your-photo.jpg" // Add your photo here
+                  src={profilePic}
                   alt="Profile"
                   sx={{
-                    width: '100%',
-                    height: 'auto',
+                    width: "100%",
+                    height: "100%",
                     borderRadius: 2,
-                    position: 'relative',
+                    position: "relative",
                     zIndex: 1,
+                    objectFit: "cover",
                   }}
                 />
               </Box>
@@ -100,4 +115,4 @@ const AboutContainer: React.FC = () => {
   );
 };
 
-export default AboutContainer; 
+export default AboutContainer;

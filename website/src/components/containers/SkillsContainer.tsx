@@ -123,7 +123,7 @@ const itemVariants = {
   }
 };
 
-const Skills: React.FC = () => {
+const SkillsContainer: React.FC = () => {
   return (
     <Box
       component="section"
@@ -285,4 +285,4 @@ const Skills: React.FC = () => {
   );
 };
 
-export default Skills; 
+export default SkillsContainer; 

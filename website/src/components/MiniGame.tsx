@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Box, Modal, Typography, Button } from '@mui/material';
-import { Pets as CatIcon, WaterDrop } from '@mui/icons-material';
+import catImage from '../assets/cat.png';
 
 interface GameObject {
   x: number;
@@ -45,13 +45,49 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
     obstaclesRef.current = [];
     playerRef.current.y = canvas.height / 2;
 
-    const drawIcon = (ctx: CanvasRenderingContext2D, icon: string, x: number, y: number, size: number, color: string) => {
+    // Load images and setup water drop style
+    const playerImg = new Image();
+    playerImg.src = catImage;
+
+    const drawImage = (ctx: CanvasRenderingContext2D, image: HTMLImageElement, x: number, y: number, width: number, height: number) => {
+      ctx.drawImage(image, x, y, width, height);
+    };
+
+    const drawWaterDrop = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number) => {
       ctx.save();
-      ctx.fillStyle = color;
-      ctx.font = `${size}px "Material Icons"`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(icon, x + size/2, y + size/2);
+      ctx.fillStyle = '#80C4FF';
+      ctx.beginPath();
+      const centerX = x + width / 2;
+      const bottomY = y + height;
+      
+      // Draw a teardrop shape
+      ctx.moveTo(centerX, y);
+      ctx.bezierCurveTo(
+        x, y + height * 0.5,
+        x, bottomY,
+        centerX, bottomY
+      );
+      ctx.bezierCurveTo(
+        x + width, bottomY,
+        x + width, y + height * 0.5,
+        centerX, y
+      );
+      
+      ctx.fill();
+      
+      // Add a shine effect
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.beginPath();
+      ctx.ellipse(
+        centerX - width * 0.2,
+        y + height * 0.3,
+        width * 0.2,
+        height * 0.2,
+        -Math.PI / 4,
+        0,
+        2 * Math.PI
+      );
+      ctx.fill();
       ctx.restore();
     };
 
@@ -70,8 +106,8 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
       // Keep player in bounds
       player.y = Math.max(0, Math.min(canvas.height - player.height, player.y));
 
-      // Draw player (cat)
-      drawIcon(ctx, 'pets', player.x, player.y, player.width, '#9580FF');
+      // Draw player (cat image)
+      drawImage(ctx, playerImg, player.x, player.y, player.width, player.height);
       
       // Update and draw obstacles
       obstaclesRef.current = obstaclesRef.current.filter(obstacle => {
@@ -90,8 +126,8 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
           return false;
         }
 
-        // Draw obstacle (water drop)
-        drawIcon(ctx, 'water_drop', obstacle.x, obstacle.y, obstacle.width, '#FF80BF');
+        // Draw water drop obstacle
+        drawWaterDrop(ctx, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
         
         return obstacle.x > -obstacle.width;
       });
@@ -104,36 +140,28 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
 
     gameLoopRef.current = gameLoop;
 
-    // Load Material Icons font
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
+    // Start the game loop immediately
+    const spawnObstacle = () => {
+      if (!isGameRunning) return;
+      obstaclesRef.current.push({
+        x: canvas.width,
+        y: Math.random() * (canvas.height - 50),
+        width: 30,
+        height: 30,
+        speed: 3 + Math.random() * 2
+      });
+    };
 
-    // Wait for font to load
-    document.fonts.ready.then(() => {
-      const spawnObstacle = () => {
-        if (!isGameRunning) return;
-        obstaclesRef.current.push({
-          x: canvas.width,
-          y: Math.random() * (canvas.height - 50),
-          width: 30,
-          height: 30,
-          speed: 3 + Math.random() * 2
-        });
-      };
+    const obstacleInterval = setInterval(spawnObstacle, 2000);
+    animationFrameRef.current = requestAnimationFrame(gameLoop);
 
-      const obstacleInterval = setInterval(spawnObstacle, 2000);
-      animationFrameRef.current = requestAnimationFrame(gameLoop);
-
-      return () => {
-        isGameRunning = false;
-        clearInterval(obstacleInterval);
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
-      };
-    });
+    return () => {
+      isGameRunning = false;
+      clearInterval(obstacleInterval);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
   }, [gameStarted, gameOver]);
 
   // Handle keyboard events

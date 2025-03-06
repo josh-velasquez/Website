@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { darkTheme } from './theme';
 import Background from './components/Background';
-import Header from './components/Header';
-import AboutContainer from './components/AboutContainer';
-import Skills from './components/Skills';
-import ProjectsContainer from './components/ProjectsContainer';
-import ExperienceContainer from './components/ExperienceContainer';
+import HeaderContainer from './components/containers/HeaderContainer';
+import AboutContainer from './components/containers/AboutContainer';
+import SkillsContainer from './components/containers/SkillsContainer';
+import ProjectsContainer from './components/containers/ProjectsContainer';
+import ExperienceContainer from './components/containers/ExperienceContainer';
 import MiniGame from './components/MiniGame';
 import EasterEggHint from './components/EasterEggHint';
 
@@ -35,10 +35,10 @@ function App() {
       <CssBaseline />
       <Background />
       <div className="App">
-        <Header />
+        <HeaderContainer />
         <main>
           <AboutContainer />
-          <Skills />
+          <SkillsContainer />
           <ProjectsContainer />
           <ExperienceContainer />
         </main>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton } from '@mui/material';
 import { Code, GitHub, LinkedIn } from '@mui/icons-material';
 
-const Header: React.FC = () => {
+const HeaderContainer: React.FC = () => {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -213,4 +213,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default HeaderContainer; 

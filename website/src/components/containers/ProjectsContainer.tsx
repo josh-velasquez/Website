@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     title: "Fible",
     description:
-      "Full-stack recipe sharing platform with React, .NET, and SQLite",
+      "Full-stack recipe sharing platform with React, .NET, and SQLite.",
     technologies: ["TypeScript", "React", ".NET", "SQLite", "Material UI"],
     image: fibleImage,
     githubLink: "https://github.com/josh-velasquez/Fible",
@@ -60,7 +60,6 @@ const projects: Project[] = [
     technologies: ["JavaScript", "HTML", "CSS"],
     image: strackerImage,
     githubLink: "https://github.com/yourusername/project4",
-    liveLink: "https://project4.com",
   },
   {
     title: "Colour Pick",
@@ -73,7 +72,7 @@ const projects: Project[] = [
   {
     title: "KeyLogger",
     description:
-      "Logs keystrokes indiscreetly or discreetly with customizable settings",
+      "Logs keystrokes indiscreetly or discreetly with customizable settings.",
     technologies: ["WPF", "C#"],
     image: keyloggerImage,
     githubLink: "https://github.com/josh-velasquez/KeyLogger",

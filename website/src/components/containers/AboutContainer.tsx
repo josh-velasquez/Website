@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Container, Typography, Box, Grid, Chip } from "@mui/material";
-import { Code, Storage, Cloud } from "@mui/icons-material";
+import { Code, Storage, Cloud, Api } from "@mui/icons-material";
 import profilePic from "../../assets/ProfilePic.png";
 
 const AboutContainer: React.FC = () => {
@@ -53,8 +53,8 @@ const AboutContainer: React.FC = () => {
                   variant="outlined"
                 />
                 <Chip
-                  icon={<Storage />}
-                  label="Database Design"
+                  icon={<Api />}
+                  label="Microservices"
                   color="primary"
                   variant="outlined"
                 />

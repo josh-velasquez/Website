@@ -12,17 +12,31 @@ const EasterEggHint: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         gap: 1,
-        opacity: 0.1,
-        transition: 'opacity 0.3s ease',
+        opacity: 0.15,
+        transition: 'all 0.3s ease',
         '&:hover': {
-          opacity: 0.6,
+          opacity: 0.7,
+          transform: 'scale(1.05)',
         },
       }}
     >
       <SportsEsports 
         sx={{ 
-          fontSize: '0.9rem',
+          fontSize: '1.2rem',
           color: 'primary.main',
+          filter: 'drop-shadow(0 0 4px rgba(149, 128, 255, 0.5))',
+          animation: 'pulse 2s infinite',
+          '@keyframes pulse': {
+            '0%': {
+              filter: 'drop-shadow(0 0 4px rgba(149, 128, 255, 0.3))',
+            },
+            '50%': {
+              filter: 'drop-shadow(0 0 8px rgba(149, 128, 255, 0.6))',
+            },
+            '100%': {
+              filter: 'drop-shadow(0 0 4px rgba(149, 128, 255, 0.3))',
+            },
+          },
         }} 
       />
       <Typography

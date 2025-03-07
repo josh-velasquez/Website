@@ -10,7 +10,7 @@ interface GameObject {
   speed: number;
 }
 
-const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onClose }) => {
+const MiniGameContainer: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onClose }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
@@ -272,4 +272,4 @@ const MiniGame: React.FC<{ open: boolean; onClose: () => void }> = ({ open, onCl
   );
 };
 
-export default MiniGame; 
+export default MiniGameContainer; 

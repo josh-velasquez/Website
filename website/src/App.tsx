@@ -7,7 +7,8 @@ import AboutContainer from './components/containers/AboutContainer';
 import SkillsContainer from './components/containers/SkillsContainer';
 import ProjectsContainer from './components/containers/ProjectsContainer';
 import ExperienceContainer from './components/containers/ExperienceContainer';
-import MiniGame from './components/MiniGame';
+import ContactContainer from './components/containers/ContactContainer';
+import MiniGameContainer from './components/MiniGameContainer';
 import EasterEggHint from './components/EasterEggHint';
 
 function App() {
@@ -41,10 +42,11 @@ function App() {
           <SkillsContainer />
           <ProjectsContainer />
           <ExperienceContainer />
+          <ContactContainer />
         </main>
         <EasterEggHint />
       </div>
-      <MiniGame open={gameOpen} onClose={() => setGameOpen(false)} />
+      <MiniGameContainer open={gameOpen} onClose={() => setGameOpen(false)} />
     </ThemeProvider>
   );
 }

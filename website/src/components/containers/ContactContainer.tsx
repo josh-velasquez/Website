@@ -39,7 +39,6 @@ const ContactContainer: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
     // For now, we'll just show a success message
     setSnackbar({
       open: true,
@@ -163,7 +162,7 @@ const ContactContainer: React.FC = () => {
                     <LinkedIn fontSize="large" />
                   </IconButton>
                   <IconButton
-                    href="mailto:josh.velasquez@example.com"
+                    href="mailto:joshvelasquez6@gmail.com"
                     color="primary"
                     size="large"
                   >
